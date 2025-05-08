@@ -4,9 +4,11 @@ buildscript {
     apply from: 'versions.gradle'
 
     repositories {
+        mavenCentral()
         google()
-        jcenter()
+        maven { url 'https://repo.grails.org/grails/core/' }
     }
+
 
     dependencies {
         classpath "com.android.tools.build:gradle:$versions.androidGradlePlugin"
@@ -15,12 +17,14 @@ buildscript {
         // in the individual module build.gradle files
 
         classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.7.3'
+        //classpath 'org.codehaus.groovy.modules.http-builder:http-builder:0.7.2'
         classpath 'com.github.dcendents:android-maven-gradle-plugin:2.1'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$versions.kotlin"
     }
 }
 
 plugins {
+    id "maven-publish"
     id "com.github.spotbugs" version "2.0.0" apply(false)
 }
 
@@ -39,8 +43,9 @@ allprojects {
     repositories {
         mavenLocal()
         google()
-        jcenter()
-        maven { url "https://jitpack.io" }
+        mavenCentral()
+        maven { url 'https://jitpack.io' }
+        maven { url 'https://repo.grails.org/grails/core/' }
     }
 }
 
